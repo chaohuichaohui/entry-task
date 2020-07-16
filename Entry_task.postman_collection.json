@@ -1,0 +1,1471 @@
+{
+	"info": {
+		"_postman_id": "89d365bd-75b3-4e55-9655-b4e183a35ffe",
+		"name": "Entry task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "a,b都不为空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "010959d4-35f3-4412-bb1f-e2bba154c3c9",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"nomal params\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is abc\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?a=1&b=abc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "1"
+						},
+						{
+							"key": "b",
+							"value": "abc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a为空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0ae01647-cc4f-419c-b486-814d9379efaf",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"empty a\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=abc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "abc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b为空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2193be7-b387-41a5-922f-6f46d90f625b",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"empty b\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "76e17f17-402c-4b96-85d5-2390f8acd3d8",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is null\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is null\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?a=1&b=null",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "1"
+						},
+						{
+							"key": "b",
+							"value": "null"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a,b都为空",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a6bf087d-26ed-41a1-bba5-2c568b512e0b",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"empty a and b\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a负溢出",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2062ca5-ccb4-4649-bde7-02243401dbb6",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"a is Negative overflow\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=abc&a=-2147483649",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "abc"
+						},
+						{
+							"key": "a",
+							"value": "-2147483649"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a负最小值",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c510030c-f003-46b8-8980-40d90648b5c4",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"a is min Negative \"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.-2147483648 is abc\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=abc&a=-2147483648",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "abc"
+						},
+						{
+							"key": "a",
+							"value": "-2147483648"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a正溢出",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e0d759a-6599-43c7-856b-d59be7b52b30",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"a is Positive  overflow\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=abc&a=2147483648",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "abc"
+						},
+						{
+							"key": "a",
+							"value": "2147483648"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a正最大值",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2656934e-f4c2-40cd-8057-d6f370d79580",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"a is max positive \"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.2147483647 is abc\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=abc&a=2147483647",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "abc"
+						},
+						{
+							"key": "a",
+							"value": "2147483647"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a是非数字",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a67c6ffe-baa5-40dd-8eff-7f39740cca86",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"a is not int\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=abc&a=a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "abc"
+						},
+						{
+							"key": "a",
+							"value": "a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "a是浮点数",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ad0a854f-2266-48cb-a0ba-d39282d2d21a",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"a is float\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=abc&a=1.1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "abc"
+						},
+						{
+							"key": "a",
+							"value": "1.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b length overflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "10927a70-6ec5-4c95-b36c-148e303f3ea1",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is length  overflow\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b length normal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "20aed666-a611-451a-b29a-e34f7df6fc95",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is max length \"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是中文",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4e01d39-c396-4f08-9cb8-03682403c1db",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is Chinese\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is 中国\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=中国&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "中国"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是转义字符",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfe46f43-4ee8-491e-92e8-19c6bbae329c",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is ESC\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is \\\\\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=%5c&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "%5c"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b包含空格",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b8ca0759-e496-47bd-aa50-658af4eeac45",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b concains spaces\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is ab bc\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=ab bc&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "ab bc"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是纯空格",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1e1538a-f6af-4add-9822-62bbf58121e1",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is space\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=  &a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "  "
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b仅包含制表符",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d2da4cd0-5448-4413-972d-e240eb1bf4de",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is tab\"] = jsonData.err_code === 21 && jsonData.err_msg === \"empry or wrong params\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=\t&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "\t"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b包含tab字符",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49a369a5-9785-4255-8520-31a42ba3657d",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b concains tabs\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is \tab\tbc\t\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=\tab\tbc\t&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "\tab\tbc\t"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是目录分隔符",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6748dc2d-3359-4fe9-9548-7840f6f34e72",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is /\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is /\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=/&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "/"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是问号符",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6748dc2d-3359-4fe9-9548-7840f6f34e72",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is ？\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is ？\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=？&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "？"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是百分号",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6748dc2d-3359-4fe9-9548-7840f6f34e72",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is %\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is %\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=%25&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "%25"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是&",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6748dc2d-3359-4fe9-9548-7840f6f34e72",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is &\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is &\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=%26&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "&"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是=",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6748dc2d-3359-4fe9-9548-7840f6f34e72",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is =\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is =\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b==&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "="
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是#",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6748dc2d-3359-4fe9-9548-7840f6f34e72",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is #\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is #\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=%23&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "#"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "b是+",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6748dc2d-3359-4fe9-9548-7840f6f34e72",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"b is +\"] = jsonData.err_code === 0 && jsonData.err_msg === \"success\" && jsonData.refenence === \"No.1 is +\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?b=%2B&a=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "b",
+							"value": "%2B"
+						},
+						{
+							"key": "a",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "system_err",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "99b4fa07-29cf-4cad-9ecb-d4ebb5e6f456",
+						"exec": [
+							"var schema = {",
+							"  properties: {",
+							"      err_code: {type: 'integer'},",
+							"      err_msg: {type: 'string'},",
+							"      refenence: {type: 'string'}",
+							"  }",
+							"};",
+							"",
+							"tests[\"Valid data schema\"] = tv4.validate(responseBody, schema);",
+							"",
+							"// check ",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"system_err\"] = jsonData.err_code === 11 && jsonData.err_msg === \"system error\";"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shopee/test?a=100&b=abc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shopee",
+						"test"
+					],
+					"query": [
+						{
+							"key": "a",
+							"value": "100"
+						},
+						{
+							"key": "b",
+							"value": "abc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d8a47a8a-eab0-4edf-b2db-0901c341a7a9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "81417f83-161a-4e9e-9a93-552abcfba23b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
